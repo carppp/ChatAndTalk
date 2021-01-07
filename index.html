@@ -101,7 +101,8 @@
         event.preventDefault();
         socket.emit("chat message", {
           value: document.getElementById("msg").value,
-          user: userName
+          user: userName,
+          room: room
         });
 
         document.getElementById("msg").value = "";

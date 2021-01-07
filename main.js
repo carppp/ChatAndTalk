@@ -13,10 +13,6 @@ app.get("/", function (req, res) {
 
 
 
-var thisRoom = "";
-
-
-
 io.on("connection", function (socket) {
   socket.on("join room", (data) => {
     console.log(data.username + " joined the room: " + data.roomName);
@@ -24,21 +20,20 @@ io.on("connection", function (socket) {
     var Newuser = joinUser(socket.id, data.username, data.roomName);
     socket.emit("send data" , {id: socket.id, username: Newuser.username, roomname: Newuser.roomname });
     
-    thisRoom = Newuser.roomname;
-    socket.join(thisRoom);
+    socket.join(Newuser.roomname);
   });
 
 
   socket.on("chat message", (data) => {
-    io.to(thisRoom).emit("chat message", {data: data, id: socket.id});
-    console.log(data.user + " send to " + thisRoom + ": " + data.value);
+    io.to(data.room).emit("chat message", {data: data, id: socket.id});
+    console.log(data.user + " send to " + data.room + ": " + data.value);
   });
 
 
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
     if(user) {
-      console.log(user.username + " has left the room: " + thisRoom);
+      console.log(user.username + " has left the room: " + user.roomname);
     }
   });
 });

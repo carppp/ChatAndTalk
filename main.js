@@ -26,10 +26,11 @@ io.on("connection", function (socket) {
     let Newuser = joinUser(socket.id, data.username,data.roomName)
     //io.to(Newuser.roomname).emit('send data' , {username : Newuser.username,roomname : Newuser.roomname, id : socket.id})
     // io.to(socket.id).emit('send data' , {id : socket.id ,username:Newuser.username, roomname : Newuser.roomname });
-    socket.emit('send data' , {id : socket.id ,username:Newuser.username, roomname : Newuser.roomname });
+    // socket.emit('send data' , {id : socket.id ,username:Newuser.username, roomname : Newuser.roomname });
+    socket.emit('send data' , socket.id);
    
     thisRoom = Newuser.roomname;
-    console.log(Newuser);
+    // console.log(Newuser);
     socket.join(Newuser.roomname);
   });
 
@@ -41,13 +42,13 @@ io.on("connection", function (socket) {
 
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
-    console.log(user);
-    if(user) {
-      console.log(user.username + ' has left');
-    }
-    console.log("disconnected");
+    // console.log(user);
+    // if(user) {
+    //   console.log(user.username + ' has left');
+    // }
+    // console.log("disconnected");
 
   });
 });
 
-http.listen(3000, function () {});
+http.listen(80, function () {});

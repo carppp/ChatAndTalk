@@ -54,9 +54,9 @@
         background-color: blue;
         color: white;
         word-wrap: break-word;
-        border-radius: 5px;
-        border-width: 3px;
-        border-color: darkblue;
+        border-radius: 10px;
+        border-width: 10px;
+        border-color: blue;
         border-style: solid;
       }
       .myDiv {
@@ -65,9 +65,9 @@
         width: 50%;
         background-color: gray;
         word-wrap: break-word;
-        border-radius: 5px;
-        border-width: 3px;
-        border-color: darkgray;
+        border-radius: 10px;
+        border-width: 10px;
+        border-color: gray;
         border-style: solid;
       }
     </style>
@@ -81,7 +81,7 @@
       <input type="submit" id="submitButton" value="Send" />
     </form>
     <ul id="messages"></ul>
-    <br><br><br>
+    <br><br>
   </body>
 
 
@@ -158,6 +158,7 @@
       div.appendChild(p);
       li.appendChild(div);
       document.getElementById("messages").appendChild(li);
+      document.getElementById("messages").appendChild(document.createElement("br"));
 
       //scroll to the bottom
       window.scrollTo(0, document.body.scrollHeight);

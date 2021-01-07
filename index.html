@@ -17,6 +17,14 @@
     #submitButton {
       width: 9%;
     }
+    .header {
+      padding: 10px 16px;
+      background: #555;
+      color: #f1f1f1;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
     .time {
       color: red;
       font-family: "Ubuntu";
@@ -57,6 +65,8 @@
 
 
   <body>
+    <div class="header" id="myHeader">
+    </div>
     <form>
       <input type="text" id="msg" />
       <input type="submit" id="submitButton" value="submit" />
@@ -90,6 +100,9 @@
       console.log("username: " + data.username);
       console.log("room name: " + data.roomname);
       console.log("ID: " + ID);
+      document.getElementById("header").innerHTML =
+        `<h2>${room}</h2>` +
+        `<h3>Hi, ${userName}</h3>`
     });
 
     $("#msg").focus();

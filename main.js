@@ -22,12 +22,12 @@ io.on("connection", function (socket) {
 
 
   socket.on("join room", (data) => {
-    console.log('in room');
-    let Newuser = joinUser(socket.id, data.username,data.roomName)
+    // console.log('in room');
+    let Newuser = joinUser(socket.id, data.username,data.roomName);
     //io.to(Newuser.roomname).emit('send data' , {username : Newuser.username,roomname : Newuser.roomname, id : socket.id})
     // io.to(socket.id).emit('send data' , {id : socket.id ,username:Newuser.username, roomname : Newuser.roomname });
-    // socket.emit('send data' , {id : socket.id ,username:Newuser.username, roomname : Newuser.roomname });
-    socket.emit('send data' , socket.id);
+    socket.emit('send data' , {id: socket.id ,username: Newuser.username, roomname: Newuser.roomname });
+    // socket.emit('send data' , socket.id);
    
     thisRoom = Newuser.roomname;
     // console.log(Newuser);
@@ -36,7 +36,7 @@ io.on("connection", function (socket) {
 
 
   socket.on("chat message", (data) => {
-    io.to(thisRoom).emit("chat message", {data:data,id : socket.id});
+    io.to(thisRoom).emit("chat message", {data: data, id: socket.id});
   });
 
 

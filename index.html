@@ -81,13 +81,13 @@
 
 
     //send event that user has joined room
-    socket.emit("join room", {username : userName, roomName : room});
+    socket.emit("join room", {username: userName, roomName: room});
 
 
     //receive data from server.
     socket.on("send data",(data)=>{
         ID = data.id; //ID will be used later
-        console.log(" my ID:" + ID);
+        // console.log(" my ID:" + ID);
     });
 
     $("#m").focus();
@@ -98,8 +98,7 @@
         event.preventDefault();
         socket.emit("chat message", {
           value: document.getElementById("m").value,
-          user: userName,
-        
+          user: userName
         });
 
         document.getElementById("m").value = "";
@@ -112,8 +111,6 @@
     function displayMessage(data) {
       let authorClass = "";
       let divClass = ""
-
-        console.log("msg ID:" + ID);
 
       //verify that the user ID and the message sent ID is similar 
       if (data.id === ID) {

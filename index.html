@@ -87,7 +87,7 @@
     //receive data from server.
     socket.on("send data",(data)=>{
         ID = data.id; //ID will be used later
-        // console.log(" my ID:" + ID);
+        console.log(" my ID:" + ID);
     });
 
     $("#m").focus();
@@ -113,6 +113,7 @@
       let authorClass = "";
       let divClass = ""
 
+        console.log("msg ID:" + ID);
 
       //verify that the user ID and the message sent ID is similar 
       if (data.id === ID) {

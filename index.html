@@ -65,7 +65,7 @@
 
 
   <body>
-    <div class="header" id="myHeader">
+    <div class="header" id="title">
     </div>
     <form>
       <input type="text" id="msg" />
@@ -100,9 +100,9 @@
       console.log("username: " + data.username);
       console.log("room name: " + data.roomname);
       console.log("ID: " + ID);
-      document.getElementById("header").innerHTML =
+      document.getElementById("title").innerHTML =
         `<h2>${room}</h2>` +
-        `<h3>Hi, ${userName}</h3>`
+        `<h3>Hi, ${userName}</h3>`;
     });
 
     $("#msg").focus();

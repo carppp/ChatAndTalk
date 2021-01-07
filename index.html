@@ -1,80 +1,73 @@
 <html>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
-    rel="stylesheet"
-  />
 
-  <style>
-    form {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    form input {
-      height: 30;
-      width: 90%;
-      font-size: 20px;
-    }
-    #submitButton {
-      width: 9%;
-      font-size: 20px;
-    }
-    .header {
-      padding: 10px 16px;
-      background: #555;
-      color: #f1f1f1;
-      text-align:center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-    }
-    .time {
-      color: red;
-      font-family: "Ubuntu";
-      text-align: right;
-      font-size: 20px;
-    }
-    .message {
-      display: inline;
-      font-size: 20px;
-    }
-    #messages {
-      list-style-type: none;
-      font-size: 20px;
-    }
-    .me {
-      font-family: sans-serif, "Courier New", Courier, monospace;
-      text-align: right;
-      font-size: 20px;
-    }
-    .you {
-      font-family: sans-serif, "Courier New", Courier, monospace;
-      text-align: left;
-      font-size: 20px;
-     
-    }
-    .yourDiv {
-      position: relative;
-      left: 0%;
-      width: 50%;
-      background-color: blue;
-      color: white;
-      word-wrap: break-word;
-    }
-    .myDiv {
-      position: relative;
-      left: 50%;
-      width: 50%;
-      background-color: gray;
-      word-wrap: break-word;
-    }
-  </style>
+  <header>
+    <title>Chat and Talk</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      form {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      form input {
+        height: 30;
+        width: 90%;
+        font-size: 20px;
+      }
+      #submitButton {
+        width: 9%;
+        font-size: 20px;
+      }
+      .time {
+        color: red;
+        font-family: "Ubuntu";
+        text-align: right;
+        font-size: 20px;
+      }
+      .message {
+        display: inline;
+        font-size: 20px;
+      }
+      #messages {
+        list-style-type: none;
+        font-size: 20px;
+      }
+      .me {
+        font-family: sans-serif, "Courier New", Courier, monospace;
+        text-align: right;
+        font-size: 20px;
+      }
+      .you {
+        font-family: sans-serif, "Courier New", Courier, monospace;
+        text-align: left;
+        font-size: 20px;
+       
+      }
+      .yourDiv {
+        position: relative;
+        left: 0%;
+        width: 50%;
+        background-color: blue;
+        color: white;
+        word-wrap: break-word;
+      }
+      .myDiv {
+        position: relative;
+        left: 50%;
+        width: 50%;
+        background-color: gray;
+        word-wrap: break-word;
+      }
+    </style>
+  <header>
 
 
 
   <body>
-    <div class="header" id="title">
-    </div>
     <form>
       <input type="text" id="msg" />
       <input type="submit" id="submitButton" value="submit" />
@@ -109,9 +102,7 @@
       console.log("username: " + data.username);
       console.log("room name: " + data.roomname);
       console.log("ID: " + ID);
-      document.getElementById("title").innerHTML =
-        `<h2>${room}</h2>` +
-        `<h3>Hi, ${userName}</h3>`;
+      document.title= "Chat and Talk: " + room;
     });
 
     $("#msg").focus();

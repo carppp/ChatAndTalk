@@ -39,5 +39,3 @@ io.on("connection", function (socket) {
 });
 
 http.listen(process.env.PORT || 3000);
-
-// add room name at top

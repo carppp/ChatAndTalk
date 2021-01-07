@@ -55,6 +55,7 @@
         color: white;
         word-wrap: break-word;
         border-radius:10px;
+        border:2px;
       }
       .myDiv {
         position: relative;
@@ -63,6 +64,7 @@
         background-color: gray;
         word-wrap: break-word;
         border-radius:10px;
+        border:2px;
       }
     </style>
   <header>
@@ -72,7 +74,7 @@
   <body>
     <form>
       <input type="text" id="msg" />
-      <input type="submit" id="submitButton" value="submit" />
+      <input type="submit" id="submitButton" value="Send" />
     </form>
     <ul id="messages"></ul>
     <br><br><br>
@@ -87,8 +89,8 @@
   ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
   <script>
-    var userName = prompt("whats your name");
-    var room = prompt("room name");
+    var userName = prompt("Username");
+    var room = prompt("Room name");
     var ID = "";
     var socket = io();
 
@@ -145,10 +147,10 @@
       const p = document.createElement("p");
       div.className = divClass;
       p.className = "time";
-      p.innerText = moment().format("hh:mm    ");
+      p.innerText = moment().format("hh:mm");
       div.innerHTML =
-        `<p class="${authorClass}">${data.data.user}    </p>` +
-        `<p class="message">    ${data.data.value}</p>`
+        `<p class="${authorClass}">${data.data.user}</p>` +
+        `<p class="message">${data.data.value}</p>`
       div.appendChild(p);
       li.appendChild(div);
       document.getElementById("messages").appendChild(li);

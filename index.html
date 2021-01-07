@@ -145,10 +145,10 @@
       const p = document.createElement("p");
       div.className = divClass;
       p.className = "time";
-      p.innerText = moment().format("hh:mm");
+      p.innerText = moment().format("hh:mm    ");
       div.innerHTML =
-        `<p class="${authorClass}">${data.data.user}</p>` +
-        `<p class="message">${data.data.value}</p>`
+        `<p class="${authorClass}">${data.data.user}    </p>` +
+        `<p class="message">    ${data.data.value}</p>`
       div.appendChild(p);
       li.appendChild(div);
       document.getElementById("messages").appendChild(li);

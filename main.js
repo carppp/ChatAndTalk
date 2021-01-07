@@ -1,6 +1,6 @@
-let app = require("express")();
-let http = require("http").createServer(app);
-let io = require("socket.io")(http);
+var app = require("express")();
+var http = require("http").createServer(app);
+var io = require("socket.io")(http);
 const {joinUser, removeUser, findUser} = require('./users');
 
 
@@ -13,7 +13,7 @@ app.get("/", function (req, res) {
 
 
 
-let thisRoom = "";
+var thisRoom = "";
 
 
 

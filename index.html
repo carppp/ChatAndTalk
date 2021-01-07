@@ -58,7 +58,7 @@
 
   <body>
     <form>
-      <input type="text" id="m" />
+      <input type="text" id="msg" />
       <input type="submit" id="submitButton" value="submit" />
     </form>
     <ul id="messages"></ul>
@@ -77,7 +77,7 @@
     let userName = prompt("whats your name");
     let room = prompt("room name");
     let ID = "";
-    var socket = io();
+    let socket = io();
 
 
     //send event that user has joined room
@@ -85,26 +85,30 @@
 
 
     //receive data from server.
-    socket.on("send data",(data)=>{
-        ID = data.id; //ID will be used later
-        // console.log(" my ID:" + ID);
+    socket.on("send data", (data)=>{
+      ID = data.id;
+      console.log("username: " + data.username);
+      console.log("room name: " + data.roomname);
+      console.log("ID: " + ID);
     });
 
-    $("#m").focus();
+    $("#msg").focus();
+
     //when form is submitted, capture the input value and then send it to server
     document
       .getElementsByTagName("form")[0]
       .addEventListener("submit", function (event) {
         event.preventDefault();
         socket.emit("chat message", {
-          value: document.getElementById("m").value,
+          value: document.getElementById("msg").value,
           user: userName
         });
 
-        document.getElementById("m").value = "";
+        document.getElementById("msg").value = "";
       });
+
     socket.on("chat message", (data) => {
-      // console.log(data.data.user + ": " + data.id);
+      console.log(data.data.user + ": " + data.data.value);
       displayMessage(data);
     });
 
@@ -114,7 +118,6 @@
 
       //verify that the user ID and the message sent ID is similar 
       if (data.id === ID) {
-        // console.log("This person has sent a message")
         authorClass = "me";
         divClass = "myDiv";
       } else {
@@ -123,24 +126,26 @@
       }
 
       const div = document.createElement("div");
-      div.className = divClass;
       const li = document.createElement("li");
       const p = document.createElement("p");
+      div.className = divClass;
       p.className = "time";
       p.innerText = moment().format("hh:mm");
       div.innerHTML =
-        '<p class="' +
-        authorClass +
-        '">' +
-        data.data.user +
-        "</p>" +
-        '<p class="message"> ' +
-        data.data.value +
-        "</p>";
+        `<p class="${authorClass}">${data.data.user}</p>` +
+        `<p class="message">${data.data.value}</p>`
+        // '<p class="' +
+        // authorClass +
+        // '">' +
+        // data.data.user +
+        // "</p>" +
+        // '<p class="message"> ' +
+        // data.data.value +
+        // "</p>";
       div.appendChild(p);
       li.appendChild(div);
-
       document.getElementById("messages").appendChild(li);
+      
       //scroll to the bottom
       window.scrollTo(0, document.body.scrollHeight);
     }

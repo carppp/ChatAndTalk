@@ -1,6 +1,6 @@
-var app = require("express")();
-var http = require("http").createServer(app);
-var io = require("socket.io")(http);
+let app = require("express")();
+let http = require("http").createServer(app);
+let io = require("socket.io")(http);
 const {joinUser, removeUser, findUser} = require('./users');
 
 
@@ -18,25 +18,20 @@ let thisRoom = "";
 
 
 io.on("connection", function (socket) {
-  console.log("connected");
-
-
   socket.on("join room", (data) => {
-    // console.log('in room');
-    let Newuser = joinUser(socket.id, data.username,data.roomName);
-    //io.to(Newuser.roomname).emit('send data' , {username : Newuser.username,roomname : Newuser.roomname, id : socket.id})
-    // io.to(socket.id).emit('send data' , {id : socket.id ,username:Newuser.username, roomname : Newuser.roomname });
-    socket.emit('send data' , {id: socket.id ,username: Newuser.username, roomname: Newuser.roomname });
-    // socket.emit('send data' , socket.id);
-   
+    console.log(data.username + " joined the room: " + data.roomName);
+
+    let Newuser = joinUser(socket.id, data.username, data.roomName);
+    socket.emit("send data" , {id: socket.id, username: Newuser.username, roomname: Newuser.roomname });
+    
     thisRoom = Newuser.roomname;
-    // console.log(Newuser);
-    socket.join(Newuser.roomname);
+    socket.join(thisRoom);
   });
 
 
   socket.on("chat message", (data) => {
     io.to(thisRoom).emit("chat message", {data: data, id: socket.id});
+    console.log(data.user + " send to " + thisRoom + ": " + data.value);
   });
 
 

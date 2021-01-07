@@ -37,12 +37,9 @@ io.on("connection", function (socket) {
 
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
-    // console.log(user);
-    // if(user) {
-    //   console.log(user.username + ' has left');
-    // }
-    // console.log("disconnected");
-
+    if(user) {
+      console.log(user.username + " has left the room: " + thisRoom);
+    }
   });
 });
 

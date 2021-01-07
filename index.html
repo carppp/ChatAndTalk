@@ -49,7 +49,7 @@
       position: relative;
       left: 50%;
       width: 50%;
-      background-color: violet;
+      background-color: viovar;
       word-wrap: break-word;
     }
   </style>
@@ -74,10 +74,10 @@
   ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
   <script>
-    let userName = prompt("whats your name");
-    let room = prompt("room name");
-    let ID = "";
-    let socket = io();
+    var userName = prompt("whats your name");
+    var room = prompt("room name");
+    var ID = "";
+    var socket = io();
 
 
     //send event that user has joined room
@@ -113,8 +113,8 @@
     });
 
     function displayMessage(data) {
-      let authorClass = "";
-      let divClass = ""
+      var authorClass = "";
+      var divClass = ""
 
       //verify that the user ID and the message sent ID is similar 
       if (data.id === ID) {
@@ -137,7 +137,7 @@
       div.appendChild(p);
       li.appendChild(div);
       document.getElementById("messages").appendChild(li);
-      
+
       //scroll to the bottom
       window.scrollTo(0, document.body.scrollHeight);
     }

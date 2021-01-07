@@ -21,7 +21,7 @@ io.on("connection", function (socket) {
   socket.on("join room", (data) => {
     console.log(data.username + " joined the room: " + data.roomName);
 
-    let Newuser = joinUser(socket.id, data.username, data.roomName);
+    var Newuser = joinUser(socket.id, data.username, data.roomName);
     socket.emit("send data" , {id: socket.id, username: Newuser.username, roomname: Newuser.roomname });
     
     thisRoom = Newuser.roomname;
@@ -44,3 +44,5 @@ io.on("connection", function (socket) {
 });
 
 http.listen(process.env.PORT || 3000);
+
+// add room name at top

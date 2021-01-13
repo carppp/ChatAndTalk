@@ -4,8 +4,10 @@
     <title>Chat and Talk</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
       rel="stylesheet"
     />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <style>
       form {
@@ -71,6 +73,10 @@
         border-style: solid;
       }
     </style>
+    <script>
+      $("#mydiv").setAttribute("class","col-md-5");
+      $("#yourdiv").setAttribute("class","col-md-5");
+    </script>
   </head>
 
 
@@ -80,6 +86,7 @@
       <input type="text" id="msg" />
       <input type="submit" id="submitButton" value="Send" />
     </form>
+
     <ul id="messages"></ul>
     <br><br>
   </body>
